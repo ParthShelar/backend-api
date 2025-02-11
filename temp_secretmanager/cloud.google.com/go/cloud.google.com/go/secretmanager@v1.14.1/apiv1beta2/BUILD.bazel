@@ -1,0 +1,47 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "apiv1beta2",
+    srcs = [
+        "auxiliary.go",
+        "auxiliary_go123.go",
+        "doc.go",
+        "secret_manager_client.go",
+        "version.go",
+    ],
+    importpath = "github.com/backend-team/backend-api/temp_secretmanager/cloud.google.com/go/cloud.google.com/go/secretmanager@v1.14.1/apiv1beta2",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_googleapis_gax_go_v2//:gax-go",
+        "@com_github_googleapis_gax_go_v2//iterator",
+        "@com_google_cloud_go_iam//apiv1/iampb",
+        "@com_google_cloud_go_secretmanager//apiv1beta2/secretmanagerpb",
+        "@com_google_cloud_go_secretmanager//internal",
+        "@org_golang_google_api//googleapi",
+        "@org_golang_google_api//iterator",
+        "@org_golang_google_api//option",
+        "@org_golang_google_api//option/internaloption",
+        "@org_golang_google_api//transport/grpc",
+        "@org_golang_google_api//transport/http",
+        "@org_golang_google_genproto//googleapis/cloud/location",
+        "@org_golang_google_grpc//:grpc",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_protobuf//encoding/protojson",
+        "@org_golang_google_protobuf//proto",
+    ],
+)
+
+go_test(
+    name = "apiv1beta2_test",
+    srcs = [
+        "secret_manager_client_example_go123_test.go",
+        "secret_manager_client_example_test.go",
+    ],
+    deps = [
+        "@com_google_cloud_go_iam//apiv1/iampb",
+        "@com_google_cloud_go_secretmanager//apiv1beta2",
+        "@com_google_cloud_go_secretmanager//apiv1beta2/secretmanagerpb",
+        "@org_golang_google_api//iterator",
+        "@org_golang_google_genproto//googleapis/cloud/location",
+    ],
+)

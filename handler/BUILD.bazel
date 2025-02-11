@@ -1,0 +1,13 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "handler",
+    srcs = ["handler/handler.go"],
+    importpath = "github.com/backend-team/backend-api/handler",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//proto:api_go_proto",
+        "//repository",  # Add dependency to repository library
+        "@com_github_prometheus_client_golang//prometheus",
+    ],
+)

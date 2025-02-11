@@ -1,0 +1,34 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "promhttp",
+    srcs = glob(["**/*.go"]),
+    importpath = "github.com/backend-team/backend-api/patched_prometheus/github.com/prometheus/client_golang/prometheus/promhttp",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_klauspost_compress//zstd",
+        "@com_github_prometheus_client_golang//internal/github.com/golang/gddo/httputil",
+        "@com_github_prometheus_client_golang//prometheus",
+        "@com_github_prometheus_client_model//go",
+        "@com_github_prometheus_common//expfmt",
+    ],
+)
+
+go_test(
+    name = "promhttp_test",
+    srcs = [
+        "delegator_test.go",
+        "http_test.go",
+        "instrument_client_test.go",
+        "instrument_server_test.go",
+        "option_test.go",
+    ],
+    embed = [":promhttp"],
+    deps = [
+        "@com_github_klauspost_compress//zstd",
+        "@com_github_prometheus_client_golang//prometheus",
+        "@com_github_prometheus_client_golang//prometheus/testutil",
+        "@com_github_prometheus_client_model//go",
+        "@org_golang_google_protobuf//proto",
+    ],
+)

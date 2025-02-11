@@ -1,0 +1,24 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "secretmanagerpb",
+    srcs = [
+        "resources.pb.go",
+        "service.pb.go",
+    ],
+    importpath = "github.com/backend-team/backend-api/temp_secretmanager/cloud.google.com/go/secretmanager/apiv1beta2/secretmanagerpb",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_google_cloud_go_iam//apiv1/iampb",
+        "@org_golang_google_genproto_googleapis_api//annotations",
+        "@org_golang_google_grpc//:grpc",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+        "@org_golang_google_protobuf//types/known/durationpb",
+        "@org_golang_google_protobuf//types/known/emptypb",
+        "@org_golang_google_protobuf//types/known/fieldmaskpb",
+        "@org_golang_google_protobuf//types/known/timestamppb",
+    ],
+)

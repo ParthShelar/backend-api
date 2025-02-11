@@ -1,0 +1,13 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "httpmiddleware",
+    srcs = ["httpmiddleware.go"],
+    importpath = "github.com/backend-team/backend-api/patched_prometheus/github.com/prometheus/client_golang/examples/middleware/httpmiddleware",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_prometheus_client_golang//prometheus",
+        "@com_github_prometheus_client_golang//prometheus/promauto",
+        "@com_github_prometheus_client_golang//prometheus/promhttp",
+    ],
+)

@@ -1,0 +1,30 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "prometheus",
+    srcs = ["api.go"],
+    importpath = "github.com/backend-team/backend-api/patched_prometheus/github.com/prometheus/client_golang/api/prometheus/v1",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_json_iterator_go//:go_default_library",
+        "@com_github_prometheus_client_golang//api",
+        "@com_github_prometheus_common//model",
+    ],
+)
+
+go_test(
+    name = "prometheus_test",
+    srcs = [
+        "api_bench_test.go",
+        "api_test.go",
+        "example_test.go",
+    ],
+    embed = [":prometheus"],
+    deps = [
+        "@com_github_json_iterator_go//:go_default_library",
+        "@com_github_prometheus_client_golang//api",
+        "@com_github_prometheus_client_golang//api/prometheus/v1:prometheus",
+        "@com_github_prometheus_common//config",
+        "@com_github_prometheus_common//model",
+    ],
+)

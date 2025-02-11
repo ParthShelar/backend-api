@@ -1,0 +1,17 @@
+load("@rules_go//go:def.bzl", "go_binary")
+
+go_binary(
+    name = "backend-api",
+    srcs = ["cmd/main.go"],
+    importpath = "github.com/backend-team/backend-api/cmd",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//config",
+        "//handler",
+        "//repository",
+        "//proto:api_go_proto",
+        "@com_github_prometheus_client_golang//prometheus/promhttp",
+        "@org_golang_google_grpc//:go_default_library",
+        "@com_google_cloud_go_spanner//:go_default_library", # Spanner dependency
+    ],
+)

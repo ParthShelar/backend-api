@@ -1,0 +1,33 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "testutil",
+    srcs = [
+        "lint.go",
+        "testutil.go",
+    ],
+    importpath = "github.com/backend-team/backend-api/patched_prometheus/github.com/prometheus/client_golang/prometheus/testutil",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_kylelemons_godebug//diff:go_default_library",
+        "@com_github_prometheus_client_golang//prometheus",
+        "@com_github_prometheus_client_golang//prometheus/internal",
+        "@com_github_prometheus_client_golang//prometheus/testutil/promlint",
+        "@com_github_prometheus_client_model//go",
+        "@com_github_prometheus_common//expfmt",
+        "@org_golang_google_protobuf//proto",
+    ],
+)
+
+go_test(
+    name = "testutil_test",
+    srcs = [
+        "lint_test.go",
+        "testutil_test.go",
+    ],
+    embed = [":testutil"],
+    deps = [
+        "@com_github_prometheus_client_golang//prometheus",
+        "@com_github_prometheus_common//expfmt",
+    ],
+)

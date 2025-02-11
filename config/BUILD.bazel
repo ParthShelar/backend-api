@@ -1,0 +1,11 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "config",
+    srcs = ["config/config.go"],
+    importpath = "github.com/backend-team/backend-api/config",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_google_cloud_go_secretmanager//:go_default_library",
+    ],
+)

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option go_package = "./backend-api";
+
+// Service definition
+service BackendApiService {
+  // RPC method to register a employee
+  rpc RegisterEmployee (RegisterEmployeeRequest) returns (RegisterEmployeeResponse);
+}
+
+// Employee entity as defined in spanner
+message Employee {
+  int64  id           = 1;  
+  string first_name   = 2;
+  string last_name    = 3;
+  string joining_date = 4;  // store as string (YYYY-MM-DD)
+  double salary       = 5;
+}
+
+// Message definition for the request
+message RegisterEmployeeRequest {
+  string first_name   = 1;
+  string last_name    = 2;
+  string joining_date = 3;  
+  double salary       = 4;
+}
+
+// Message definition for the response
+message RegisterEmployeeResponse {
+  Employee employee = 1; 
+}

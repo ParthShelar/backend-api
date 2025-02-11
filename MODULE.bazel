@@ -1,0 +1,28 @@
+module(
+    name = "backend_api",  # Or a more descriptive name
+    version = "1.0.0",  # Or your version
+)
+
+bazel_dep(name = "rules_go", version = "0.51.0")  # Or latest
+bazel_dep(name = "rules_proto", version = "7.0.2")  # Or latest
+bazel_dep(name = "gazelle", version = "0.39.0")  # Ensure Gazelle is included
+
+go_sdk = use_extension("@rules_go//go:extensions.bzl", "go_sdk")
+go_sdk.download(version = "1.23.5")  # Or your Go version
+go_sdk.host()
+
+go_deps = use_extension("@gazelle//:extensions.bzl", "go_deps")
+go_deps.from_file(go_mod = "//:go.mod")
+
+google_cloud = use_extension("//:bzl/google_cloud.bzl", "google_cloud_deps")  # Correct, relative to workspace root
+use_repo(google_cloud, "com_google_cloud_go_secretmanager")
+use_repo(google_cloud, "com_google_cloud_go_spanner")
+
+prometheus = use_extension("//:bzl/prometheus.bzl", "prometheus_deps")  # Correct, relative to workspace root
+use_repo(prometheus, "com_github_prometheus_client_golang")
+
+grpc = use_extension("//:bzl/grpc.bzl", "grpc_deps")  # Correct, relative to workspace root
+use_repo(grpc, "org_golang_google_grpc")
+
+protobuf = use_extension("//:bzl/protobuf.bzl", "protobuf_deps")  # Correct, relative to workspace root
+use_repo(protobuf, "com_google_protobuf")

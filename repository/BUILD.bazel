@@ -1,0 +1,11 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "repository",
+    srcs = ["repository/repository.go"],
+    importpath = "github.com/backend-team/backend-api/repository",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_google_cloud_go_spanner//:go_default_library",
+    ],
+)

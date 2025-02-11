@@ -1,0 +1,76 @@
+# Bazel build output and temporary files
+bazel-*
+*.log
+*.runfiles/
+*.runfiles_manifest
+*.params
+*.d
+execroot/
+sandbox-*/*
+cache/
+output/
+
+# User-specific Bazel configuration
+.bazelrc.user
+.bazelversion
+
+# Generated files (e.g., Protobuf, gRPC)
+**/*.pb.go
+**/*.pb.gw.go
+
+# Go-specific
+bin/
+pkg/
+vendor/
+go.sum
+go.work
+
+# Temporary Go files
+*.exe
+*.test
+*.out
+
+# VS Code-specific
+.vscode/
+*.code-workspace
+
+# IntelliJ IDEA-specific
+.idea/
+*.iml
+*.iws
+.idea_modules/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.swn
+
+# Logs and temporary files
+*.log
+*.tmp
+*.pid
+*.gz
+*.bak
+
+# Debugging files
+*.prof
+*.trace
+*.pprof
+*.coverage
+
+# Testing outputs
+*.test
+*.out
+*.exe
+
+# IDE-specific metadata files
+__pycache__/
+*.pyc
+*.pyo
+*.class
+*.project
+*.classpath
+*.factorypath
+*.settings/

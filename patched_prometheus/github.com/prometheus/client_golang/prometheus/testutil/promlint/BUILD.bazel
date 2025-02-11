@@ -1,0 +1,26 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "promlint",
+    srcs = [
+        "problem.go",
+        "promlint.go",
+        "validation.go",
+    ],
+    importpath = "github.com/backend-team/backend-api/patched_prometheus/github.com/prometheus/client_golang/prometheus/testutil/promlint",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_prometheus_client_golang//prometheus/testutil/promlint/validations",
+        "@com_github_prometheus_client_model//go",
+        "@com_github_prometheus_common//expfmt",
+    ],
+)
+
+go_test(
+    name = "promlint_test",
+    srcs = ["promlint_test.go"],
+    deps = [
+        "@com_github_prometheus_client_golang//prometheus/testutil/promlint",
+        "@com_github_prometheus_client_model//go",
+    ],
+)

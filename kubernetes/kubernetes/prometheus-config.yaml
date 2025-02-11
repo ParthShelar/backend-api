@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # Scrape the Prometheus server itself
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  # Scrape your application
+  - job_name: "las-service"
+    static_configs:
+      - targets: ["cot-service:2112"] # Update this to your application's metrics endpoint
+

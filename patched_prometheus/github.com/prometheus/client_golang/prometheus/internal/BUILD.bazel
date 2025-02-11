@@ -1,0 +1,27 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "internal",
+    srcs = [
+        "almost_equal.go",
+        "difflib.go",
+        "go_collector_options.go",
+        "go_runtime_metrics.go",
+        "metric.go",
+    ],
+    importpath = "github.com/backend-team/backend-api/patched_prometheus/github.com/prometheus/client_golang/prometheus/internal",
+    visibility = ["//patched_prometheus/github.com/prometheus/client_golang/prometheus:__subpackages__"],
+    deps = [
+        "@com_github_prometheus_client_model//go",
+        "@com_github_prometheus_common//model",
+    ],
+)
+
+go_test(
+    name = "internal_test",
+    srcs = [
+        "difflib_test.go",
+        "go_runtime_metrics_test.go",
+    ],
+    embed = [":internal"],
+)
