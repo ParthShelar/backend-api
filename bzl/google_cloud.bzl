@@ -7,7 +7,7 @@ def _google_cloud_deps_impl(ctx): # Corrected implementation function name
     http_archive(
         name = "com_google_cloud_go_secretmanager",
         sha256 = "5e9d2fd3332aa58e20efa4440453d9d5130a5b535b95ce8d3d3b0d10883dcb5e",
-        urls = ["file:///Users/parth/Documents/360WorldDocs/backend-api/patched_secretmanager.zip"],
+        urls = ["file:///Users/parth/Documents/backend-api/patched_secretmanager.zip"],
         build_file_content = """
 load("@rules_go//go:def.bzl", "go_library")
 

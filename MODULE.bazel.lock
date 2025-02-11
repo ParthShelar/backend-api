@@ -165,7 +165,7 @@
             "attributes": {
               "sha256": "5e9d2fd3332aa58e20efa4440453d9d5130a5b535b95ce8d3d3b0d10883dcb5e",
               "urls": [
-                "file:///Users/parth/Documents/360WorldDocs/backend-api/patched_secretmanager.zip"
+                "file:///Users/parth/Documents/backend-api/patched_secretmanager.zip"
               ],
               "build_file_content": "\nload(\"@rules_go//go:def.bzl\", \"go_library\")\n\ngo_library(\n    name = \"go_default_library\",\n    srcs = glob([\"**/*.go\"]),\n    importpath = \"cloud.google.com/go/secretmanager\",\n    visibility = [\"//visibility:public\"],\n)\n"
             }
@@ -230,7 +230,7 @@
             "repoRuleId": "@@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
             "attributes": {
               "urls": [
-                "file:///Users/parth/Documents/360WorldDocs/backend-api/patched_prometheus.zip"
+                "file:///Users/parth/Documents/backend-api/patched_prometheus.zip"
               ],
               "sha256": "d1bdf4c03b371cacb7eb5c2a1dee321fa998e026010043f62e073662dd9800e3",
               "strip_prefix": "patched_prometheus/github.com/prometheus/client_golang"
