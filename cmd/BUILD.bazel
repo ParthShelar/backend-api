@@ -2,7 +2,7 @@ load("@rules_go//go:def.bzl", "go_binary")
 
 go_binary(
     name = "backend-api",
-    srcs = ["cmd/main.go"],
+    srcs = ["main.go"],
     importpath = "github.com/backend-team/backend-api/cmd",
     visibility = ["//visibility:public"],
     deps = [
