@@ -2,7 +2,7 @@ load("@rules_go//go:def.bzl", "go_library")
 
 go_library(
     name = "handler",
-    srcs = ["handler/handler.go"],
+    srcs = ["handler.go"],
     importpath = "github.com/backend-team/backend-api/handler",
     visibility = ["//visibility:public"],
     deps = [
