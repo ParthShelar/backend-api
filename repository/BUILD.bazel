@@ -2,7 +2,7 @@ load("@rules_go//go:def.bzl", "go_library")
 
 go_library(
     name = "repository",
-    srcs = ["repository/repository.go"],
+    srcs = ["repository.go"],
     importpath = "github.com/backend-team/backend-api/repository",
     visibility = ["//visibility:public"],
     deps = [
